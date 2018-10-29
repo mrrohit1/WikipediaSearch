@@ -83,7 +83,7 @@ public class HomePresenter implements HomeContract.Presenter {
                     isFetchEnabled = !(pageList.size() <= 0);
                     view.showSearchResults(pageList);
                 }
-                if (response.raw().cacheResponse() != null && response.raw().networkResponse() == null) {
+                if (response.raw().cacheResponse() != null && response.raw().networkResponse() == null && !NetworkUtils.isInternetAvaialble(context)) {
                     view.showSnackBarMessage("Results are from cache, Please turn your internet ON", true);
                 }
                 view.updateProgressBar(View.GONE);
